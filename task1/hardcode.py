@@ -18,9 +18,9 @@ parser.add_argument('-i', '--interpreter',
     help='interpeter of launching subprocces'
 )
 parser.add_argument('-p', '--path_to_process',
-    default='./sleep_proccess.py',
+    default='./sleep_process.py',
     type=str,
-    help='realtive or absolute path for subprocces'
+    help='realtive or absolute path for subprocess'
 )
 parser.add_argument('-t', '--time_interval',
     default='1',
@@ -40,14 +40,14 @@ COLLECT_INTEVAL = config['time_interval']
 
 def main():
     """
-    Gets info (cpu/rss/vms) about selected procces and pass it to data storage
+    Gets info (cpu/rss/vms) about selected process and pass it to data storage
     in json format.
     DATA_STORAGE path can be changed below.
     """
 
     DATA_STORAGE = './data.json'
 
-    # Run subprocces:
+    # Run subprocess:
     proc = subprocess.Popen([str(PROC_INTERPRETER), str(PROC_PATH)], shell=False)
     proc_watcher_pid = proc.pid
     print('Current sleep_proccess PID is ' + f'{proc.pid}')
@@ -60,7 +60,7 @@ def main():
             time_day = time.strftime('%m/%d/%Y', record_time_UTC)
             time_clock = time.strftime('%H:%M:%S', record_time_UTC)
 
-            #  Collecting data about selected procces:
+            #  Collecting data about selected process:
             psu = psutil.Process(proc_watcher_pid)
             psu_cpu = psu.cpu_percent(interval=0.1)
             psu_rss = psu.memory_info().rss
@@ -86,7 +86,7 @@ def main():
                 print('WARNING: data.json Not Found!')
             else:
                 if path.getsize(data_file) == 0:
-                    print('inpass')
+                    print('WARNING: data.json is empty. Initiating new record.')
                     pass
                 else:
                     with open(data_file, 'r') as df:
@@ -111,7 +111,7 @@ def main():
         print('ERROR: ' + str(e))
 
         subprocess.call(['kill', '-9', '%d' % proc.pid])
-        print(f'{proc.pid}' + ' sleep_proccess.py ' + 'terminated')
+        print(f'{proc.pid}' + ' sleep_process.py ' + 'terminated')
 
 
 if __name__ == "__main__":
