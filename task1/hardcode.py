@@ -96,8 +96,10 @@ def main():
                         except Exception as json_e:
                             print('ERROR: ' + str(json_e))
                             print('WARNING: Wrong data format in data.json. It will be overwriten!')
+                            raise Exception(json_e)
 
             listObj.append(data)
+
             # overwriting data.json:
             with open(data_file, 'w') as json_file:
                 json.dump(listObj, json_file,
@@ -105,6 +107,7 @@ def main():
                                 separators=(',',': '))
             if warning:
                 print('WARNING: New data.json was created!')
+
             time.sleep(int(COLLECT_INTEVAL))
 
     except (Exception, KeyboardInterrupt) as e:
