@@ -5,8 +5,6 @@ import shutil
 import time
 
 
-
-
 # Arguments for terminal ussage:
 parser = argparse.ArgumentParser(description=format(
             'This program provides the ability to synchronize folders'
