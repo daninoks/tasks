@@ -105,7 +105,6 @@ def main():
                     print('ERROR: ' + str(e))
                     raise Exception(e)
 
-            print(rd_content)
             # Remove deleted files:
             for rd_item in rd_content:
                 if rd_item not in sd_content:
