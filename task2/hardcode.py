@@ -60,8 +60,6 @@ def main():
             # Init time record:
             record_time_UTC = time.gmtime()
             time_string = time.strftime('%m/%d/%Y %H:%M:%S', record_time_UTC)
-            time_day = time.strftime('%m/%d/%Y', record_time_UTC)
-            time_clock = time.strftime('%H:%M:%S', record_time_UTC)
 
             copied = []
             created = []
