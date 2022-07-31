@@ -65,13 +65,14 @@ def main():
             created = []
             removed = []
 
-            sd_content = os.listdir(SOURCE_DIR)
-            rd_content = os.listdir(REPLICA_DIR)
-
             #  Create REPLICA_DIR if not exist:
             if not os.path.exists(REPLICA_DIR):
                 os.mkdir(REPLICA_DIR)
                 print(f'---> REPLICA_DIR just created! path: {REPLICA_DIR}')
+
+            sd_content = os.listdir(SOURCE_DIR)
+            rd_content = os.listdir(REPLICA_DIR)
+
 
             # Copy files:
             for sd_item in sd_content:
@@ -88,18 +89,16 @@ def main():
                     e = 'EROROR: Source and destination represents the same file.'
                     ERROR_MSG += f'{e}\n'
                     print(e)
-                    raise Exception(e)
                 # If there is any permission issue:
                 except PermissionError:
                     e = 'ERROR: Permission denied.'
                     ERROR_MSG += f'{e}\n'
                     print(e)
-                    raise Exception(e)
                 # For other errors
                 except Exception as e:
                     ERROR_MSG += f'{e}\n'
                     print('ERROR: ' + str(e))
-                    raise Exception(e)
+
 
             # Remove deleted files:
             for rd_item in rd_content:
@@ -114,12 +113,11 @@ def main():
                         e = 'ERROR: Permission denied.'
                         ERROR_MSG += f'{e}\n'
                         print(e)
-                        raise Exception(e)
                     # For other errors:
                     except Exception as e:
                         ERROR_MSG += f'{e}\n'
                         print('ERROR: ' + str(e))
-                        raise Exception(e)
+
 
             if ERROR_MSG:
                 data = format(
@@ -137,6 +135,7 @@ def main():
                 )
             print(data)
 
+
             try:
                 #  Create LOGS_DIR if not exist:
                 if not os.path.exists(LOGS_DIR):
@@ -150,7 +149,11 @@ def main():
             except PermissionError:
                 e = 'ERROR: Permission denied.'
                 print(e)
-                raise Exception(e)
+
+
+            if ERROR_MSG:
+                raise Exception(ERROR_MSG)
+
 
             time.sleep(TIME_INTERVAL)
 

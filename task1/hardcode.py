@@ -85,6 +85,7 @@ def main():
             data_file = DATA_STORAGE
             listObj = []
 
+
             warning = False
             if path.isfile(data_file) is False:
                 warning = True
@@ -105,13 +106,16 @@ def main():
 
             listObj.append(data)
 
+
             # overwriting data.json:
             with open(data_file, 'w') as json_file:
                 json.dump(listObj, json_file,
                                 indent=4,
                                 separators=(',',': '))
+
             if warning:
                 print('WARNING: New data.json was created!')
+
 
             time.sleep(int(COLLECT_INTEVAL))
 
