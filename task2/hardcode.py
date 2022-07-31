@@ -8,8 +8,13 @@ import time
 
 
 # Arguments for terminal ussage:
-parser = argparse.ArgumentParser(description='Arguments can be passed or defaults will be used instead',
-                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser = argparse.ArgumentParser(description=format(
+            'This program provides the ability to synchronize folders'
+            'with a selected time interval.'
+            'All changes are recorded in the log file, which can also be changed.'
+            'Arguments can be passed or defaults will be used instead.'
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-s', '--source_dir',
     default='./source_dir',
     type=str,
@@ -47,6 +52,10 @@ print(f'# Choosen Synchronization time interval is {TIME_INTERVAL}')
 print(f'# Synchronization logs will be stored at {LOGS_DIR}')
 
 def main():
+    """
+    Provides Synchronization SOURCE_DIR with REPLICA by selected TIME_INTERVAL.
+    Also collecting logs to selected directory.
+    """
     ERROR_MSG = ''
     try:
         while True:

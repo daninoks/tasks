@@ -10,8 +10,13 @@ from os import path
 
 
 # Arguments for terminal ussage:
-parser = argparse.ArgumentParser(description='Arguments can be passed or defaults will be used instead',
-                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser = argparse.ArgumentParser(description=format(
+            'This program provides an opportunity to collect data about'
+            'the selected process (cpu, rss, vms). '
+            'The data is stored in the root of the program in data.json.'
+            'Arguments can be passed or defaults will be used instead'
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-i', '--interpreter',
     default='python',
     type=str,
