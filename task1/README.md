@@ -2,7 +2,7 @@
 
 ### Usage:
 > This program will launch a specified process and periodically (with a provided time interval).
-> And collect CPU/RSS/VMS about it
+> collect CPU/RSS/VMS about it
 
 Script can be run with defaults:
 ```
