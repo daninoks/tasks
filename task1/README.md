@@ -1,8 +1,8 @@
 ## TASK 2
 
 ### Usage:
-> This program will launch a specified process and periodically (with a provided time interval).
-> collect CPU/RSS/VMS about it
+> This program will launch a specified process and periodically
+> (with a provided time interval) collect CPU/RSS/VMS of this process.
 
 Script can be run with defaults:
 ```
