@@ -1,9 +1,11 @@
 ## TASK 2
 
 ### Usage:
-> This program will launch a specified process and periodically
-> (with a provided time interval) collect CPU/RSS/VMS of this process
-> Core parameters can be passed directly from terminal..
+> This program will launch a specified process and periodically:
+
+> - With a provided time interval) collect CPU/RSS/VMS of selected process.
+> For tests can be used sleep_process.py.
+> It counts Pi, so don't be surprised avg 100% CPU one single core.
 
 Script can be run with defaults:
 ```
@@ -14,3 +16,5 @@ Check help for commands:
 ```
 python hardcode.py -h
 ```
+> to run different process you should pass process interpreter of selected process
+> and process itself with relative or absolute path to it.
