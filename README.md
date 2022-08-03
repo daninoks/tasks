@@ -14,7 +14,8 @@ python --version
 3. Get into virtual environment and install dependencies:
 ```
 source env/bin/activate
-
+```
+```
 pip install requirements.txt
 ```
 
