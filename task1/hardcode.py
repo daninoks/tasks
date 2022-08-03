@@ -70,13 +70,15 @@ def main():
             psu_cpu = psu.cpu_percent(interval=0.1)
             psu_rss = psu.memory_info().rss
             psu_vms = psu.memory_info().vms
+            psu_des = psu.num_fds()
 
             data = {
                 'day': time_day,
                 'time': time_clock,
                 'cpu': psu_cpu,
                 'rss': psu_rss,
-                'vms': psu_rss
+                'vms': psu_rss,
+                'descriptors': psu_des
                 }
             print('--> Collected data: ' + str(data))
 
@@ -121,7 +123,7 @@ def main():
 
     except (Exception, KeyboardInterrupt) as e:
         print('ERROR: ' + str(e))
-
+    finally:
         subprocess.call(['kill', '-9', '%d' % proc.pid])
         print(f'{proc.pid}' + ' sleep_process.py ' + 'terminated')
 

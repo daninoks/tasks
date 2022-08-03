@@ -3,7 +3,7 @@
 ### Usage:
 > This program will launch a specified process and periodically:
 
-> - With a provided time interval) collect CPU/RSS/VMS of selected process.
+> - With a provided time interval) collect CPU/RSS/VMS/descriptors_num of selected process.
 > For tests can be used sleep_process.py.
 > It counts Pi, so don't be surprised avg 100% CPU one single core.
 
